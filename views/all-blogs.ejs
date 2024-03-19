@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+    <%- include("./partials/nav.ejs") %>
+
+    <main>
+      <h1>All Blog Posts</h1>
+
+      <div class="flex g50px wrap">
+        <% blogPosts.forEach((post, index) => { %>
+        <div class="card" id="card_<%= index %>" data-json-id="<%= post.id %>">
+          <div class="card-cover-img-shape">
+            <img
+              src="./images/<%= post.imgSrc %>"
+              alt="blog post cover image"
+            />
+          </div>
+          <div class="card-text">
+            <h3><%= post.title %></h3>
+            <p><%= post.subheader %></p>
+
+            <div class="flex center">
+              <!--I'll make the entire card clickable, but keep the button here to give the illusion that clicking the button does something too :'D-->
+              <button class="read-more" type="submit" value="read-blog">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </main>
+    <%- include("./partials/footer.ejs") %>
+    <script type="text/javascript" src="/js/nav-highlight-read.js"></script>
+    <script type="text/javascript" src="./js/read-more.js"></script>
+  </body>
+</html>

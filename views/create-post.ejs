@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <main>
+      <!--Change Heading based on whether a blog has been loaded or not-->
+      <% if (!locals.id) { %>
+      <h1>Create Post</h1>
+      <% } else { %>
+      <h1>Edit Post</h1>
+      <% } %>
+
+      <!--Going to start with just static page for Create New Post, then make dynamic for Edit Post-->
+      <form enctype="multipart/form-data">
+        <% if (!locals.id) { %>
+
+        <input type="hidden" id="postID" name="postID" value="0" />
+        <input type="hidden" id="createdDate" name="createdDate" value="0" />
+        <input type="hidden" id="updatedDate" name="updatedDate" value="0" />
+        <label for="title">Title</label><br />
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="My Blog Post"
+          required
+        />
+        <br /><br />
+        <label for="subheader">Headline</label><br />
+        <input
+          type="text"
+          id="subheader"
+          name="subheader"
+          placeholder="Headlines are short summaries of a Blog Post, designed to spark interest in the reader to know more and read on"
+          required
+        />
+        <br /><br />
+        <!--label elements are clickable. Creating second label for file upload and hiding input (so that I can customise what it looks like)-->
+        <!--TO DO: Javascript that updates #upload-img-text to uploaded file name and changes colour back to black-->
+        <label for="imgSrc">Cover Image</label><br />
+        <label for="imgSrc">
+          <div class="upload-img-container flex nowrap align-center">
+            <p id="upload-img-text">inspiring-image.png</p>
+            <div class="upload-img-divider"></div>
+            <img
+              src="./images/folder-open-icon.svg"
+              alt="choose cover image button"
+              class="post-meta-img"
+            />
+          </div>
+        </label>
+        <!--If editing a file, need to return original file name unless a new file is uploaded. Maybe EJS tag value='original file name'?-->
+        <input
+          type="file"
+          id="imgSrc"
+          name="cover-image"
+          accept="image/*"
+          required
+          hidden
+        />
+        <br /><br />
+        <!--turn this into a hidden Template and generate first section on page load -->
+        <!--Maybe make the fieldset a grid to get the Delete Button to display on the right hand side in-line with Section Title label-->
+        <div id="post-body">
+          <fieldset id="section-template">
+            <legend>Section 1</legend>
+            <div class="section-container grid">
+              <div class="sectionTitle">
+                <label for="sectionTitle_Num">Section Title</label><br />
+                <input
+                  type="text"
+                  id="sectionTitle_Num"
+                  name="sectionTitle"
+                  placeholder="Blogs are cool!"
+                />
+                <br /><br />
+              </div>
+              <!--Allow user to delete a section if they're not vibin-->
+              <button
+                class="delete-section flex align-center g10px"
+                type="button"
+                value="delete-section"
+                id="delete-section-num"
+              >
+                <img
+                  src="./images/delete-icon-black.svg"
+                  alt="delete icon"
+                  class="post-meta-img"
+                />
+                <p class="section-meta-action-text">Delete</p>
+              </button>
+              <div class="section-content">
+                <label for="sectionContent_Num">Section Content</label><br />
+                <textarea
+                  name="sectionContent"
+                  id="sectionContent_Num"
+                  placeholder="Did you know Blogs are cool? Ever wonder why? Well here’s why..."
+                ></textarea>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <% } else { %>
+
+        <!--Going to start with just static page for Create New Post, then make dynamic for Edit Post-->
+        <input type="hidden" id="postID" name="postID" value="<%= id %>" />
+        <input
+          type="hidden"
+          id="createdDate"
+          name="createdDate"
+          value="<%= created %>"
+        />
+        <input
+          type="hidden"
+          id="updatedDate"
+          name="updatedDate"
+          value="<%= updated %>"
+        />
+        <label for="title">Title</label><br />
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="My Blog Post"
+          value="<%= title %>"
+          required
+        />
+        <br /><br />
+        <label for="subheader">Headline</label><br />
+        <input
+          type="text"
+          id="subheader"
+          name="subheader"
+          placeholder="Headlines are short summaries of a Blog Post, designed to spark interest in the reader to know more and read on"
+          value="<%= subheader %>"
+          required
+        />
+        <br /><br />
+        <!--label elements are clickable. Creating second label for file upload and hiding input (so that I can customise what it looks like)-->
+        <!--TO DO: Javascript that updates #upload-img-text to uploaded file name and changes colour back to black-->
+        <label for="imgSrc">Cover Image</label><br />
+        <label for="imgSrc">
+          <div class="upload-img-container flex nowrap align-center">
+            <p id="upload-img-text"><%= imgSrc %></p>
+            <div class="upload-img-divider"></div>
+            <img
+              src="./images/folder-open-icon.svg"
+              alt="choose cover image button"
+              class="post-meta-img"
+            />
+          </div>
+        </label>
+        <!--Image isn't required due to previously being uploaded-->
+        <input
+          type="file"
+          id="imgSrc"
+          name="cover-image"
+          accept="image/*"
+          value="<%= imgSrc %>"
+          hidden
+        />
+        <br /><br />
+
+        <div id="post-body">
+          <fieldset id="section-template">
+            <legend>Section 1</legend>
+            <div class="section-container grid">
+              <div class="sectionTitle">
+                <label for="sectionTitle_Num">Section Title</label><br />
+                <input
+                  type="text"
+                  id="sectionTitle_Num"
+                  name="sectionTitle"
+                  placeholder="Blogs are cool!"
+                />
+                <br /><br />
+              </div>
+              <!--Allow user to delete a section if they're not vibin-->
+              <button
+                class="delete-section flex align-center g10px"
+                type="button"
+                value="delete-section"
+                id="delete-section-num"
+              >
+                <img
+                  src="./images/delete-icon-black.svg"
+                  alt="delete icon"
+                  class="post-meta-img"
+                />
+                <p class="section-meta-action-text">Delete</p>
+              </button>
+              <div class="section-content">
+                <label for="sectionContent_Num">Section Content</label><br />
+                <textarea
+                  name="sectionContent"
+                  id="sectionContent_Num"
+                  placeholder="Did you know Blogs are cool? Ever wonder why? Well here’s why..."
+                ></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <% for (let i = 1; i <= section.length; i++) { %>
+          <fieldset id="section-<%= i %>">
+            <legend>Section <%= i %></legend>
+            <div class="section-container grid">
+              <div class="sectionTitle">
+                <label for="sectionTitle_<%= i %>">Section Title</label><br />
+                <input
+                  type="text"
+                  id="sectionTitle_<%= i %>"
+                  name="sectionTitle"
+                  placeholder="Blogs are cool!"
+                  value="<%= section[i - 1] %>"
+                />
+                <br /><br />
+              </div>
+              <!--Allow user to delete a section if they're not vibin-->
+              <button
+                class="delete-section flex align-center g10px"
+                type="button"
+                value="delete-section"
+                id="delete-section-<%= i %>"
+              >
+                <img
+                  src="./images/delete-icon-black.svg"
+                  alt="delete icon"
+                  class="post-meta-img"
+                />
+                <p class="section-meta-action-text">Delete</p>
+              </button>
+              <div class="section-content">
+                <label for="sectionContent_<%= i %>">Section Content</label
+                ><br />
+                <textarea
+                  name="sectionContent"
+                  id="sectionContent_<%= i %>"
+                  placeholder="Did you know Blogs are cool? Ever wonder why? Well here’s why..."
+                >
+<%= content[i - 1] %></textarea
+                >
+              </div>
+            </div>
+          </fieldset>
+          <% } %>
+        </div>
+        <% } %>
+
+        <button
+          class="add-section flex align-center g10px"
+          type="button"
+          value="add-section"
+        >
+          <img
+            src="./images/plus-icon.svg"
+            alt="plus icon"
+            class="post-meta-img"
+          />
+          <p class="section-meta-action-text">Add New Section</p>
+        </button>
+        <br />
+        <br />
+        <div class="flex g50px">
+          <button
+            name="publish"
+            class="primaryCTA"
+            formaction="/publish-post"
+            formmethod="POST"
+            type="submit"
+            value="publish-post"
+          >
+            Publish
+          </button>
+
+          <button
+            name="discard"
+            id="discard-btn"
+            class="secondaryCTA"
+            type="button"
+            value="get-view-all"
+          >
+            Discard
+          </button>
+        </div>
+      </form>
+    </main>
+    <%- include("./partials/footer.ejs") %>
+    <script type="text/javascript" src="./js/nav-highlight-create.js"></script>
+    <script type="text/javascript" src="./js/create-post-form.js"></script>
+  </body>
+</html>

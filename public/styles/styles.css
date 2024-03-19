@@ -1,0 +1,477 @@
+/* Responsiveness Rules:
+    Mobile: =< 600px
+    Tablet: =< 992px
+    Desktop >= 993px
+*/
+
+/* Colour Palette:
+    Pastel Yellow: #EADFB4;
+    Light Blue: #9BB0C1;
+    Dark Blue: #51829B;
+    Orange (not used): #F6995C;
+*/
+
+/* Fonts:
+    Logo, Headers - Annie+Use+Your+Telescope
+    Content - Inter
+*/
+
+/* ~~~~~~~~~~ Global ~~~~~~~~~~~ */
+
+html,
+body {
+  margin: 0;
+}
+
+main {
+  margin-inline: 10%;
+}
+
+footer {
+  height: 50px;
+  width: 100%;
+  background-color: #eadfb4;
+  margin-top: 50px;
+}
+
+h1 {
+  font-family: "Annie Use Your Telescope", cursive;
+  font-size: 40px;
+  font-weight: normal;
+}
+
+h2,
+legend {
+  font-family: "Annie Use Your Telescope", cursive;
+  font-size: 32px;
+  font-weight: normal;
+  margin: 0;
+  margin-top: 3px;
+  /* margin-inline: 20px; */
+  /* display: inline-block; */
+}
+
+h3,
+label {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+p,
+input,
+textarea {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
+
+input,
+textarea {
+  background-color: #d9d9d940;
+  border-radius: 5px;
+  border: none;
+  margin-top: 10px;
+}
+
+input {
+  height: 2rem;
+  width: 50%;
+  padding-inline: 10px;
+}
+
+fieldset {
+  border: dashed 2px black;
+  border-radius: 10px;
+}
+
+textarea {
+  width: calc(100% - 20px);
+  height: 150px;
+  padding-inline: 10px;
+  padding-block: 6px;
+}
+
+input::placeholder {
+  color: #00000050;
+}
+
+textarea::placeholder {
+  color: #00000050;
+}
+
+a {
+  text-decoration: none; /* Gets rid of underline */
+  color: inherit; /* font colour is inherited from parent */
+}
+
+button {
+  width: 164px;
+  height: 51px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
+
+.read-more {
+  background-color: #eadfb4;
+  color: #51829b;
+  margin-top: 4px;
+}
+
+.read-more:hover {
+  background-color: #9bb0c1;
+  cursor: pointer;
+}
+
+.read-more:active {
+  background-color: #51829b;
+  color: white;
+}
+
+.primaryCTA {
+  background-color: #51829b;
+  color: white;
+  font-weight: bold;
+  /* margin: auto; */
+}
+
+.primaryCTA:hover {
+  background-color: #9bb0c1;
+  cursor: pointer;
+}
+
+.primaryCTA:active {
+  box-shadow: inset 0px 5px 10px 2px #51829b;
+}
+
+.secondaryCTA {
+  background-color: white;
+  color: #51829b;
+  border: solid 3px #51829b;
+  /* display: inline-block; */
+}
+
+.secondaryCTA:hover {
+  background-color: #9bb0c1;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.secondaryCTA:active {
+  box-shadow: inset 0px 5px 10px 2px #51829b;
+}
+
+/* ~~~~~~~~~~ Flex Formats ~~~~~~~~~~~ */
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.center {
+  justify-content: center;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.nowrap {
+  flex-wrap: nowrap;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.g10px {
+  /* 10px gap row and column */
+  gap: 10px 10px;
+}
+
+.g50px {
+  /* 50px gap row and column */
+  gap: 50px 50px;
+}
+
+/* ~~~~~~~~~~ Grid Formats ~~~~~~~~~~~ */
+
+.grid {
+  display: grid;
+}
+
+/* 
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~ DESKTOP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+*/
+
+/* ~~~~~~~~~~ Navigation Bar ~~~~~~~~~~~ */
+
+nav {
+  background-color: #eadfb4;
+}
+
+.menu {
+  color: #51829b;
+  font-family: "Annie Use Your Telescope";
+}
+
+#logo {
+  font-size: 4rem;
+  padding-inline: 2rem;
+  padding-top: 0.5rem;
+  display: inline-block;
+}
+
+.nav-button {
+  font-size: 2rem;
+  padding: 2rem;
+  padding-top: 2.6rem;
+  display: inline-block;
+}
+
+.nav-button:hover {
+  background-color: #9bb0c1;
+}
+
+.nav-button-active {
+  background-color: #51829b;
+  color: white;
+}
+
+/* ~~~~~~~~~~ Blog Post Card Layout ~~~~~~~~~~~ */
+
+.card {
+  min-width: 300px;
+  max-width: 400px;
+  height: fit-content;
+}
+
+.card:active {
+  background-color: aliceblue;
+}
+
+.card-cover-img-shape {
+  width: inherit;
+  height: 160px;
+  border: solid;
+  border-bottom-style: none;
+  border-width: 3px;
+  border-color: #51829b;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.card-cover-img-shape img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 7px 7px 0px 0px;
+}
+
+.card-text {
+  width: inherit;
+  height: fit-content;
+  border: solid;
+  border-top-style: none;
+  border-width: 3px;
+  border-color: #51829b;
+  border-radius: 0px 0px 10px 10px;
+  padding: 20px;
+}
+
+/* ~~~~~~~~~~ Read Post Web Page ~~~~~~~~~~~ */
+.blog-post-header {
+  width: 100vw;
+  height: 370px;
+  background-color: #51829b;
+  position: relative;
+  display: inline-block;
+}
+
+.post-cover-img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+  opacity: 0.5;
+  display: block;
+}
+
+.header-text {
+  width: 80%;
+  max-height: inherit;
+  padding-inline: 10%;
+  margin-block: auto;
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.blog-post-title {
+  font-family: "Inter", sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.blog-post-subheader {
+  font-family: "Inter", sans-serif;
+  font-size: 32px;
+  /* font-weight: bold; */
+  font-style: italic;
+  text-align: center;
+}
+
+.post-meta-date {
+  color: #9bb0c1;
+  display: inline-block;
+  margin-right: 24px;
+}
+
+.post-meta-img {
+  height: 35px;
+  width: 35px;
+  display: inline-block;
+}
+
+.post-meta-action-text {
+  color: #51829b;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.section-meta-action-text {
+  font-weight: 700;
+  display: inline-block;
+}
+
+.edit-post,
+.delete-post,
+.delete-section,
+.add-section {
+  background-color: white;
+}
+
+.edit-post:hover,
+.delete-post:hover,
+.delete-section:hover,
+.add-section:hover {
+  background-color: #9bb0c1;
+  cursor: pointer;
+}
+
+.content {
+  margin-bottom: auto;
+}
+
+/* ~~~~~~~~~~ Create/Edit Post ~~~~~~~~~~~ */
+
+#subheader {
+  width: calc(100% - 20px);
+}
+
+.upload-img-container {
+  background-color: #d9d9d940;
+  width: fit-content;
+  height: 2rem;
+  padding-inline: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.upload-img-container:hover {
+  cursor: pointer;
+}
+
+#upload-img-text {
+  color: #00000050;
+  font-weight: 400;
+}
+
+.upload-img-divider {
+  background-color: #51829b;
+  height: 2rem;
+  width: 2px;
+  margin-inline: 10px;
+}
+
+.add-section,
+.delete-section {
+  width: fit-content;
+}
+
+.section-container {
+  grid-template-columns: 1fr max-content;
+  grid-template-rows: max-content 5fr;
+}
+
+.section-content {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#section-template {
+  display: none;
+}
+
+.hide {
+  display: none;
+}
+
+/* 
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~ TABLET ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+*/
+
+@media (min-width: 601px) and (max-width: 992px) {
+  /* ~~~~~~~~~~ Read Blog Post ~~~~~~~~~~~ */
+  .blog-post-title {
+    font-size: 32px;
+  }
+
+  .blog-post-subheader {
+    font-size: 24px;
+  }
+
+  /* Create Blog - Change input sizes to 100%. Will also have to change positioning of delete button for section-container (i.e. modify grid) */
+}
+
+/* 
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~ MOBILE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+    Reduce flex gap size
+    center h1, h2, CTA buttons
+*/
+
+@media (max-width: 600px) {
+  /* ~~~~~~~~~~ Navigation Bar ~~~~~~~~~~~ */
+  .menu a {
+    padding-inline: 1rem;
+  }
+  /* ~~~~~~~~~~ Read Blog Post ~~~~~~~~~~~ */
+  .blog-post-title {
+    font-size: 32px;
+  }
+
+  .blog-post-subheader {
+    font-size: 24px;
+  }
+}

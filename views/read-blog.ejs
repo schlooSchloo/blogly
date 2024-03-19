@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("partials/head.ejs") %>
+
+  <body>
+    <%- include("partials/nav.ejs") %>
+
+    <header class="blog-post-header">
+      <img
+        class="post-cover-img"
+        src="./images/<%= imgSrc %>"
+        alt="mountain range"
+      />
+      <section class="header-text">
+        <h1 class="blog-post-title"><%= title %></h1>
+        <h2 class="blog-post-subheader"><%= subheader %></h2>
+      </section>
+    </header>
+    <main>
+      <section class="meta-data flex space-between">
+        <div>
+          <p class="post-meta-date">Last Updated: <%= updated %></p>
+          <p class="post-meta-date">First Created: <%= created %></p>
+        </div>
+        <div class="flex align-center wrap">
+          <button
+            class="edit-post flex align-center g10px"
+            type="button"
+            value="edit-post"
+            data-json-id="<%= id %>"
+          >
+            <img
+              src="./images/edit-icon.svg"
+              alt="edit post icon"
+              class="post-meta-img"
+            />
+            <p class="post-meta-action-text">Edit Post</p>
+          </button>
+
+          <button
+            class="delete-post flex align-center g10px"
+            type="button"
+            value="delete-post"
+            data-json-id="<%= id %>"
+          >
+            <img
+              src="./images/delete-icon.svg"
+              alt="delete post icon"
+              class="post-meta-img"
+            />
+            <p class="post-meta-action-text">Delete Post</p>
+          </button>
+        </div>
+      </section>
+      <br />
+
+      <section class="content">
+        <% for (let i=0; i < section.length; i++) { %>
+        <h3><%= section[i] %></h3>
+        <p><%= content[i] %></p>
+        <% } %>
+      </section>
+    </main>
+    <%- include("partials/footer.ejs") %>
+    <script type="text/javascript" src="./js/delete-post.js"></script>
+    <script type="text/javascript" src="/js/nav-highlight-read.js"></script>
+  </body>
+</html>
